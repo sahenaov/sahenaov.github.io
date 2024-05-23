@@ -1,3 +1,6 @@
-.bg-image {
-    background-color: rgb(180, 134, 244);
+
+ .bg-color {
+    background-color: rgb(136, 112, 170); /* Color de fondo */
+    height: 100vh; /* Altura completa de la ventana gráfica */
+    width: 100%; /* Ancho completo */
 }
