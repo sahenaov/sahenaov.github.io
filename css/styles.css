@@ -4,3 +4,15 @@
     height: 100vh; /* Altura completa de la ventana gráfica */
     width: 100%; /* Ancho completo */
 }
+
+.contact-info {
+    text-align: center;
+    margin-top: 50px;
+}
+.contact-info h2 {
+    margin-bottom: 20px;
+}
+.contact-info .icon {
+    margin: 10px;
+    font-size: 24px;
+}
