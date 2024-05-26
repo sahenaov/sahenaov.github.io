@@ -37,3 +37,28 @@ body {
     text-align: center;
     padding: 10px 0;
   }
+
+  .table-transparent {
+    background-color: transparent;
+  }
+  
+  .table-transparent th,
+  .table-transparent td {
+    background-color: rgba(255, 255, 255, 0.097); 
+    border-color: rgb(0, 0, 0);
+  }
+
+  .card-transparent {
+    background-color: rgba(255, 255, 255, 0.097); 
+    border: 1px solid rgba(14, 13, 13, 0.921); 
+  }
+  
+  .card-transparent .card-header,
+  .card-transparent .card-body {
+    background-color: transparent;
+  }
+
+  .list-group-transparent .list-group-item {
+    background-color: rgba(255, 255, 255, 0.097); 
+    border: 1px solid rgba(255, 255, 255, 0);
+  }
