@@ -1,8 +1,8 @@
 
  .bg-color {
-    background-color: rgb(158, 151, 168); /* Color de fondo */
-    height: 100vh; /* Altura completa de la ventana gráfica */
-    width: 100%; /* Ancho completo */
+    background-color: rgb(230, 226, 236); 
+    height: 100vh; 
+    width: 100%; 
 }
 
 .contact-info {
