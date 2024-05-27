@@ -13,40 +13,46 @@
 
     <div id="menu"></div>
       <br />
+      <br />
 
-    <div class="container">
-        <div class="row">
-            <div class="col-5">
-                <div class="mb-3">
+      <div class="container">
+          <div class="row">
+              <div class="col">
+                <form onsubmit="sendToGoogleSheet(event)">
+                  <br />
+                  <div class="mb-3">
                     <label for="name" class="form-label">Nombre:</label>
                     <input type="text" class="form-control" id="name" name="name" required>
-                </div>
-                <div class="mb-3">
+                  </div>
+                  <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" required>
                   </div>
                   <div class="mb-3">
                     <label for="exampleFormControlMessage" class="form-label">Message</label>
-                    <textarea class="form-control" id="exampleFormControlMessage" rows="3"></textarea>
+                    <textarea class="form-control" id="exampleFormControlMessage" rows="3" required></textarea>
                   </div>
                   <button type="submit" class="btn btn-dark mb-3">Submit</button>
+                </form>
+              </div>
+            <div class="col">
+                    <div class="contact-info">
+                        <h5>Contact Information</h5>
+                        <p><i class="fas fa-phone icon"></i> +57 3177194449</p>
+                        <p><i class="fas fa-envelope icon"></i> salomehv2000@gmail.com</p>
+                        <p><i class="fas fa-map-marker-alt icon"></i> Manizales, Caldas, Colombia</p>
+                        <p><i class="fas fa-globe icon"></i> 
+                          <a href="https://drive.google.com/file/d/1dIVxc5dguLTIu3lrUp5-JoISHUYqJeF1/view?usp=sharing" class="text-reset">
+                            Resume
+                          </p>
+                    </div>
             </div>
-        <div class="col-5">
-                <div class="contact-info">
-                    <h5>Contact Information</h5>
-                    <p><i class="fas fa-phone icon"></i> +57 3177194449</p>
-                    <p><i class="fas fa-envelope icon"></i> salomehv2000@gmail.com</p>
-                    <p><i class="fas fa-map-marker-alt icon"></i> Manizales, Caldas, Colombia</p>
-                    <p><i class="fas fa-globe icon"></i> 
-                      <a href="https://drive.google.com/file/d/1dIVxc5dguLTIu3lrUp5-JoISHUYqJeF1/view?usp=sharing" class="text-reset">
-                        Resume
-                      </p>
-                </div>
-        </div>
-    </div>
-
-    </div>
-
+      </div>
+      </div>
+    <br />
+    <br />
+    <br />
+    <br />
     <div id="footer"></div>
 
     <script>
@@ -70,6 +76,36 @@
           loadHTML('#menu', 'html/menu.html');
           loadHTML('#footer', 'html/footer.html');
         });
+
+
+        //forms
+        function sendToGoogleSheet(event) {
+          event.preventDefault();
+      
+          const name = document.getElementById('name').value;
+          const email = document.getElementById('exampleFormControlInput1').value;
+          const message = document.getElementById('exampleFormControlMessage').value;
+      
+          const data = {name, email, message};
+      
+          fetch('https://script.google.com/macros/s/AKfycbwdbYsckDNZplhb8ck2lIw4kssOZkN-E6DxNo1M5Y-zx-cX8IDpBRtL3FHMbfkhZAZ4ug/exec', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (data.result === 'success') {
+              console.log('Data added to Google Sheet successfully');
+            } else {
+              console.log('Failed to add data to Google Sheet');
+            }
+          })
+          .catch(error => console.error('Error:', error));
+        }
+
       </script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
    
